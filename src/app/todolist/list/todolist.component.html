@@ -1,1 +1,10 @@
-<input nbInput fullWidth fieldSize="small" placeholder="Search ...">
+<nb-list>
+  <nb-list-item *ngFor="let todo of todolist" class="py-1 pr-0">
+    <div class="d-flex align-items-center">
+      <div>{{todo.name}}</div>
+      <nb-toggle status="primary" class="ml-auto mt-2"
+                 [checked]="todo.done"
+                 (checkedChange)="toggleDone($event, todo)"></nb-toggle>
+    </div>
+  </nb-list-item>
+</nb-list>

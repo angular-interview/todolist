@@ -1,13 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import { Todo } from '../todo.model';
 
 @Component({
-  selector: 'todolist-filter',
-  templateUrl: 'todolist-filter.component.html'
+  selector: 'todolist',
+  templateUrl: 'todolist.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TodoListFilterComponent implements OnInit {
-  constructor() {
+export class TodoListComponent {
+
+  @Output() onTodoChanged = new EventEmitter<Todo>();
+
+  @Input() todolist: Todo[];
+
+  toggleDone(completed: boolean, todo: Todo) {
+    this.onTodoChanged.emit({...todo, done: completed});
   }
 
-  ngOnInit() {
-  }
 }

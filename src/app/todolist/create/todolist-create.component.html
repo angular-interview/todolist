@@ -1,1 +1,11 @@
-<input nbInput fullWidth fieldSize="small" placeholder="Search ...">
+<div class="d-flex" [formGroup]="createForm">
+
+  <input nbInput fullWidth fieldSize="small" placeholder="Enter task name" formControlName="name">
+
+  <button nbButton size="small"
+          status="primary"
+          class="ml-1"
+          (click)="add()"
+          [disabled]="!createForm.valid">Add</button>
+
+</div>

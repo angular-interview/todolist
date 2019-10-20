@@ -1,0 +1,14 @@
+<nb-card>
+  <nb-card-body class="d-flex flex-column col-md-8 col-xl-6">
+
+    <todolist-filter class=""></todolist-filter>
+
+    <todolist-create (onAdd)="add($event)" class=" my-2"></todolist-create>
+
+    <todolist [todolist]="todolist | async"
+              (onTodoChanged)="todoChanged($event)"></todolist>
+
+  </nb-card-body>
+</nb-card>
+
+

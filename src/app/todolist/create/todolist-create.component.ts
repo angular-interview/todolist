@@ -1,13 +1,26 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Todo } from '../todo.model';
 
 @Component({
-  selector: 'todolist-filter',
-  templateUrl: 'todolist-filter.component.html'
+  selector: 'todolist-create',
+  templateUrl: 'todolist-create.component.html'
 })
-export class TodoListFilterComponent implements OnInit {
-  constructor() {
+export class TodoListCreateComponent {
+
+  @Output() onAdd = new EventEmitter<Todo>();
+
+  createForm: FormGroup;
+
+  constructor(private fb: FormBuilder) {
+    this.createForm = fb.group({
+      name: fb.control(null, [Validators.required, Validators.minLength(3)])
+    });
   }
 
-  ngOnInit() {
+  add() {
+    this.onAdd.emit({name: this.createForm.get('name').value, done: false});
+    this.createForm.patchValue({name: null}, {emitEvent: false});
   }
+
 }

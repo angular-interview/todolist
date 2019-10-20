@@ -1,17 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
-import { TodoListFilterComponent } from './todolist-filter.component';
-import { NbInputModule } from '@nebular/theme';
+import { TodoListCreateComponent } from './todolist-create.component';
+import { NbButtonModule, NbIconModule, NbInputModule } from '@nebular/theme';
 
 @NgModule({
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    NbInputModule
+    NbButtonModule,
+    NbInputModule,
+    NbIconModule
   ],
-  exports: [TodoListFilterComponent],
-  declarations: [TodoListFilterComponent]
+  exports: [TodoListCreateComponent],
+  declarations: [TodoListCreateComponent]
 })
-export class TodoListFilterModule {
+export class TodoListCreateModule {
 }
